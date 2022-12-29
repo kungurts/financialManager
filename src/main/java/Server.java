@@ -24,6 +24,14 @@ public class Server implements Serializable {
             writer.write("акции"+"\t"+"одежда\n");
         }
 
+        File test = new File("test.tsv");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(test))) {
+            writer.write("стол"+"\t"+"мебель\n");
+            writer.write("часы"+"\t"+"аксессуар\n");
+        }
+
+        System.out.println(MaxSpendings.readFile(test));
+
         try (ServerSocket serverSocket = new ServerSocket(8989);) { // стартуем сервер один(!) раз
             MaxSpendings maxSpendings = new MaxSpendings();
             while (true) {
