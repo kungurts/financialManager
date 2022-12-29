@@ -44,12 +44,12 @@ public class MaxSpendings {
             }
         }
         JSONObject maxSpendings = new JSONObject();
-        maxSpendings.put("category", maxCategory);
+        maxSpendings.put("Max category", maxCategory);
         maxSpendings.put("sum", max);
         return maxSpendings.toJSONString();
     }
 
-    private static Map <String, String> readFile(File file) {
+    public static Map <String, String> readFile(File file) {
         Map<String, String> readingCategories = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String s;
