@@ -1,6 +1,7 @@
 import org.json.simple.JSONObject;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -51,7 +52,7 @@ public class MaxSpendings {
 
     public static Map <String, String> readFile(File file) {
         Map<String, String> readingCategories = new HashMap<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try(BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
             String s;
             while ((s = reader.readLine()) != null) {
                 readingCategories.put(s.split("\t")[0], s.split("\t")[1]);
@@ -62,6 +63,20 @@ public class MaxSpendings {
         }
         return readingCategories;
     }
+
+//    public static Map <String, String> readFile(File file) {
+//        Map<String, String> readingCategories = new HashMap<>();
+//        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+//            String s;
+//            while ((s = reader.readLine()) != null) {
+//                readingCategories.put(s.split("\t")[0], s.split("\t")[1]);
+//            }
+//            readingCategories.put("другое", "другое");
+//        } catch (IOException e) {
+//            e.getMessage();
+//        }
+//        return readingCategories;
+//    }
 
     @Override
     public String toString() {
